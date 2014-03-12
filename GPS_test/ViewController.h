@@ -16,12 +16,13 @@
 	// 現在位置記録用
 	CLLocationDegrees _longitude;
 	CLLocationDegrees _latitude;
+    UILabel* lonlabel;
+    UILabel* latlabel;
     
     
 }
 @property NSString* message;
-@property UILabel* lonlabel;
-@property UILabel* latlabel;
+
 
 - (IBAction)launchMapsApp;
 - (IBAction)actionButtonTapped:(id)sender;

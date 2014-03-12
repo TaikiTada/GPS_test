@@ -26,6 +26,9 @@
     lon.text = @"経度:";
     lat.text = @"緯度:";
     
+    lonlabel = [[UILabel alloc] initWithFrame:CGRectMake(130,100,100,30)];
+    latlabel = [[UILabel alloc] initWithFrame:CGRectMake(130,160,100,30)];
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     CGFloat w = CGRectGetWidth(self.view.frame);
     button.frame = CGRectMake((w - 200)/2,250,200,30);
@@ -39,11 +42,14 @@
      forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     
-	self.lonlabel.text = [NSString stringWithFormat:@"%f",_longitude];
-	self.latlabel.text = [NSString stringWithFormat:@"%f",_latitude];
+    NSString *str_longitude = [NSString stringWithFormat:@"%f", _longitude];
+    NSString *str_latitude = [NSString stringWithFormat:@"%f", _latitude];
+    lonlabel.text =  str_longitude;
+    latlabel.text = str_latitude;
+    [self.view addSubview:lonlabel];
+    [self.view addSubview:latlabel];
     
-    [self.view addSubview:self.lonlabel];
-    [self.view addSubview:self.latlabel];
+
     [self.view addSubview:lon];
     [self.view addSubview:lat];
     
@@ -79,8 +85,8 @@
     //NSLog(@"%f",_longitude);
     //NSLog(@"%f",_latitude);
 	// 表示更新
-	self.lonlabel.text = [NSString stringWithFormat:@"%f",_longitude];
-	self.latlabel.text = [NSString stringWithFormat:@"%f",_latitude];
+	//lonlabel.text = [NSString stringWithFormat:@"%f",_longitude];
+	//latlabel.text = [NSString stringWithFormat:@"%f",_latitude];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -117,6 +123,8 @@
     NSString *server = @"http://www.hahahatatata.net/?from=gps_test_iphone";
     //NSLog(@"tapped:%f", _latitude);
     NSString *urlAsString = [NSString stringWithFormat:@"%@&longitude=%f&latitude=%f",server, _longitude, _latitude];
+    lonlabel.text = [NSString stringWithFormat:@"%f",_longitude];
+	latlabel.text = [NSString stringWithFormat:@"%f",_latitude];
     
     NSURL *url = [NSURL URLWithString:urlAsString];
     
