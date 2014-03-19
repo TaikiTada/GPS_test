@@ -11,7 +11,6 @@
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate> {
 	// ロケーションマネージャー
-	CLLocationManager* locationManager;
     
 	// 現在位置記録用
 	CLLocationDegrees _longitude;
@@ -21,9 +20,5 @@
     
     
 }
-@property NSString* message;
 
-
-- (IBAction)launchMapsApp;
-- (IBAction)actionButtonTapped:(id)sender;
 @end
